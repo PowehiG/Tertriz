@@ -1,20 +1,15 @@
 #include "draw.h"
 #include "terminal.h"
+#include "utils.h"
 #include <iostream>
 
 
 namespace dw{
 
-    //  物块位置转化
-    inline int block2col(int b)
-    {
-        return b * 2 - 1;
-    }
-
     void window(int top, int left, int width, int height, std::string title)
     {
         for (int r = 0; r < height; ++r){
-            tc::move_cursor(top+r, block2col(left));
+            tc::move_cursor(top+r, ut::block2col(left));
             for (int c = 0; c < width; ++c)
             {
                 if(r == 0)    //第一行
@@ -64,7 +59,25 @@ namespace dw{
                 }
             } 
         }
-        tc::move_cursor(top, block2col(left) + (width*2 - title.size())/2);
+        tc::move_cursor(top, ut::block2col(left) + (width*2 - title.size())/2);
         std::cout << title;
+        
+    }
+    void draw_tetromino(gm::Tetromino &t, int top, int left)
+    {
+        tc::move_cursor(top, ut::block2col(left));
+        for(int i=0;i<t.size();++i){
+            tc::move_cursor(top+i, ut::block2col(left));
+            for(int j=0;j<t.size();++j){
+                if(t[i][j] > 0){
+                    tc::set_back_color((int)gm::tetro_color[t[i][j]]);
+                    std::cout<<"  ";
+                    tc::reset_colors();
+                }
+                else{
+                    std::cout<<"  ";
+                }
+            }   
+        }
     }
 }

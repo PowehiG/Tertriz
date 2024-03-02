@@ -3,8 +3,9 @@
 
 using namespace std::chrono_literals;
 
-int ut::fps()
-{
+namespace ut{
+    int fps()
+    {
     // 用于计算帧率
     static auto start = std::chrono::system_clock::now();  // 获取当前时间
     auto end = start;
@@ -19,4 +20,11 @@ int ut::fps()
         start = end;
     }
     return fps;
+    }
+
+    //  物块位置转化
+    int block2col(int b)
+    {
+        return b * 2 - 1;
+    }
 }

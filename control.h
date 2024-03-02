@@ -1,9 +1,9 @@
 #pragma once
-
+#include "define.h"
 namespace gm
 {
     extern char command;
-    std::map<char, std::function<void()>> comm_func;
+    extern std::map<char, std::function<void()>> comm_func;
     char getch();
     void key_event();
     void start_listener();

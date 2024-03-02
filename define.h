@@ -6,6 +6,9 @@
 #include <termios.h>
 #include <map>
 #include <functional>
+#include <locale>
+#include <codecvt>
+#include <vector>
 
 using namespace std::chrono_literals;
 

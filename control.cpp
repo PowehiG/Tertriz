@@ -1,5 +1,6 @@
 #include "control.h"
 #include "define.h"
+#include "game.h"
 
 namespace gm
 {
@@ -30,12 +31,11 @@ namespace gm
 
     void key_event()
     {
-        while (true)
+        while (running)
         {
             command = getch();
-
-            if (command == 'q') break;
-            comm_func[command]();
+            if (comm_func.find(command) != comm_func.end())
+                comm_func[command]();
             
         }
     }
@@ -48,27 +48,27 @@ namespace gm
 
     void command_quit()
     {
-
+        quit();
     }
 
     void command_rotate()
     {
-
+        rotate();
     }
 
     void command_left()
     {
-
+        left();
     }
 
     void command_right()
     {
-
+        right();
     }
 
     void command_down()
     {
-
+        down();
     }
 
 } // namespace gm

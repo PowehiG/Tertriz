@@ -1,5 +1,7 @@
 #pragma once
-#include <string>
+#include "define.h"
+#include "tetromino.h"
+
 
 /**
  *  	0	1	2	3	4	5	6	7	8	9	A	B	C	D	E	F
@@ -16,4 +18,5 @@ U+257x	╰	╱	╲	╳	╴	╵	╶	╷	╸	╹	╺	╻	╼	╽	╾	╿
 */
 namespace dw{
     void window(int top, int left, int width, int height, std::string title);
+    void draw_tetromino(gm::Tetromino &t, int top, int left);
 }
