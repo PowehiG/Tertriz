@@ -1,3 +1,5 @@
+#pragma once
+
 namespace tc{
     
     void move_cursor(int row, int col);
